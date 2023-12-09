@@ -1,6 +1,8 @@
 #include <QApplication>
 #include "mainwindow.h"
 
+std::string appName = "qDemo";
+
 int main(int argc, char* argv[]) {
   QApplication a(argc, argv);
   MainWindow w;

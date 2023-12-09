@@ -18,7 +18,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>40</y>
+      <y>120</y>
       <width>170</width>
       <height>40</height>
      </rect>
@@ -30,8 +30,8 @@
    <widget class="QPushButton" name="pushButtonPOST">
     <property name="geometry">
      <rect>
-      <x>240</x>
-      <y>40</y>
+      <x>250</x>
+      <y>120</y>
       <width>170</width>
       <height>40</height>
      </rect>
@@ -40,17 +40,30 @@
      <string>send POST</string>
     </property>
    </widget>
-   <widget class="QLabel" name="labelVersion">
+   <widget class="QLineEdit" name="editPort">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>100</y>
-      <width>101</width>
+      <x>80</x>
+      <y>20</y>
+      <width>113</width>
       <height>30</height>
      </rect>
     </property>
     <property name="text">
-     <string>TextLabel</string>
+     <string>-1</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelPort">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>66</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Port:</string>
     </property>
    </widget>
   </widget>

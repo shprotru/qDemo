@@ -10,7 +10,7 @@ void MainWindow::showEvent(QShowEvent* e) {
   QMainWindow::showEvent(e);
   static bool firstStart = true;
   if (firstStart) {
-    ui->labelVersion->setText(qVersion());
+    ui->statusBar->showMessage(QString("qt version: ") + qVersion());
   }
 }
 
@@ -20,11 +20,35 @@ void MainWindow::on_pushButtonGET_clicked() {
           SLOT(onfinish(QNetworkReply*)));
   connect(mgr, SIGNAL(finished(QNetworkReply*)), mgr, SLOT(deleteLater()));
 
-  mgr->get(QNetworkRequest(QUrl("https://httpbin.org/get")));
+  QUrl serviceUrl = QUrl("https://httpbin.org/get");
+  if (ui->editPort->text() != "-1") {
+    bool ok;
+    int p = ui->editPort->text().toInt(&ok);
+    if (!ok) {
+      QMessageBox::warning(this, QString(appName.c_str()),
+                           "incorrect port value", QMessageBox::Close);
+      return;
+    } else {
+      serviceUrl.setPort(p);
+    }
+  }
+
+  mgr->get(QNetworkRequest(serviceUrl));
 }
 
 void MainWindow::on_pushButtonPOST_clicked() {
   QUrl serviceUrl = QUrl("https://httpbin.org/post");
+  if (ui->editPort->text() != "-1") {
+    bool ok;
+    int p = ui->editPort->text().toInt(&ok);
+    if (!ok) {
+      QMessageBox::warning(this, QString(appName.c_str()),
+                           "incorrect port value", QMessageBox::Close);
+      return;
+    } else {
+      serviceUrl.setPort(p);
+    }
+  }
 
   QUrlQuery query;
   query.addQueryItem("param1", "string1");

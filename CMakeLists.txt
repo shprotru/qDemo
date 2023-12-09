@@ -29,8 +29,19 @@ endif()
 # Find the QtWidgets library
 find_package(Qt5 REQUIRED COMPONENTS Widgets Network)
 
+FILE(GLOB_RECURSE
+    INC_ALL "*.h"
+)
+#include_directories("headers")
+
 # Tell CMake to create the qDemo executable
-add_executable(qDemo main.cpp mainwindow.cpp mainwindow.ui resources.qrc)
+add_executable(qDemo
+    main.cpp
+    mainwindow.cpp
+    ${INC_ALL}
+    mainwindow.ui
+    resources.qrc
+)
 
 # Add the Qt5 Widgets for linking
 target_link_libraries(qDemo Qt5::Widgets Qt5::Network)
