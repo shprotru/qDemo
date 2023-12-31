@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QMessageBox>
 #include <QNetworkReply>
+#include <QCloseEvent>
 #include <QUrlQuery>
 
 extern std::string appName;
@@ -20,14 +21,15 @@ class MainWindow : public QMainWindow {
   ~MainWindow();
 
  private slots:
-  void on_actionExit_triggered();
-  void on_pushButtonGET_clicked();
-  void on_pushButtonPOST_clicked();
+  void on_actionExitTriggered();
+  void on_buttonGetClicked();
+  void on_buttonPostClicked();
   void onfinish(QNetworkReply* rep);
 
  private:
   Ui::MainWindow* ui;
   void showEvent(QShowEvent* e);
+  void closeEvent(QCloseEvent *e);
 };
 
 #endif  // MAINWINDOW_H
